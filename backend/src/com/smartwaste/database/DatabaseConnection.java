@@ -17,8 +17,7 @@ public class DatabaseConnection {
     
     private static final String URL = "jdbc:mysql://localhost:3306/smart_waste";
     private static final String USER = "root";
-    private static final String PASSWORD = "SmartWaste@123";
-
+    private static final String PASSWORD = "YOUR_MYSQL_PASSWORD";
     /**
      * Get a connection to the MySQL database.
      * 
