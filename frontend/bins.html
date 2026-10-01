@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Smart Waste Collection Router</h1>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="bins.html" class="nav-link active">Bins</a>
+                <a href="trucks.html" class="nav-link">Trucks</a>
+                <a href="prediction.html" class="nav-link">AI Prediction</a>
+                <a href="priority.html" class="nav-link">Collection Priority</a>
+                <a href="route.html" class="nav-link">Route Planning</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="welcome">
+            <h2>Bin Management</h2>
+            <p>Monitor and manage waste collection bins</p>
+        </div>
+
+        <div class="summary-grid">
+            <section class="summary-card total-card">
+                <div class="summary-icon primary">📦</div>
+                <div class="summary-info">
+                    <span class="summary-label">Total Bins</span>
+                    <span class="summary-value">50</span>
+                </div>
+            </section>
+
+            <section class="summary-card critical-card">
+                <div class="summary-icon critical">⚠️</div>
+                <div class="summary-info">
+                    <span class="summary-label">Critical Bins</span>
+                    <span class="summary-value critical-text">8</span>
+                </div>
+            </section>
+
+            <section class="summary-card warning-card">
+                <div class="summary-icon warning">⚡</div>
+                <div class="summary-info">
+                    <span class="summary-label">Warning Bins</span>
+                    <span class="summary-value warning-text">15</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Bin List</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Bin ID</th>
+                                <th>Location</th>
+                                <th>Current Fill %</th>
+                                <th>Predicted Fill %</th>
+                                <th>Status</th>
+                                <th>Last Collected</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="binTableBody">
+                            <tr>
+                                <td>B001</td>
+                                <td>Main Gate</td>
+                                <td>92%</td>
+                                <td>97%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td>Today</td>
+                                <td><button class="btn btn-danger btn-sm">Collect</button></td>
+                            </tr>
+                            <tr>
+                                <td>B002</td>
+                                <td>Library</td>
+                                <td>76%</td>
+                                <td>84%</td>
+                                <td><span class="badge badge-warning">Warning</span></td>
+                                <td>Yesterday</td>
+                                <td><button class="btn btn-warning btn-sm">Schedule</button></td>
+                            </tr>
+                            <tr>
+                                <td>B003</td>
+                                <td>Canteen</td>
+                                <td>45%</td>
+                                <td>62%</td>
+                                <td><span class="badge badge-normal">Normal</span></td>
+                                <td>Today</td>
+                                <td><button class="btn btn-success btn-sm">Normal</button></td>
+                            </tr>
+                            <tr>
+                                <td>B004</td>
+                                <td>Block A</td>
+                                <td>88%</td>
+                                <td>94%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td>2 days ago</td>
+                                <td><button class="btn btn-danger btn-sm">Collect</button></td>
+                            </tr>
+                            <tr>
+                                <td>B005</td>
+                                <td>Block B</td>
+                                <td>55%</td>
+                                <td>70%</td>
+                                <td><span class="badge badge-normal">Normal</span></td>
+                                <td>Yesterday</td>
+                                <td><button class="btn btn-success btn-sm">Normal</button></td>
+                            </tr>
+                            <tr>
+                                <td>B006</td>
+                                <td>Parking</td>
+                                <td>81%</td>
+                                <td>89%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td>2 days ago</td>
+                                <td><button class="btn btn-danger btn-sm">Collect</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/bins.js"></script>
+</body>
+</html>

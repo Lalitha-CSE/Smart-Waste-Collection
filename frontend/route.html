@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Planning</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <h1 class="logo">Smart Waste Collection Router</h1>
+
+```
+    <nav class="nav">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="bins.html" class="nav-link">Bins</a>
+        <a href="trucks.html" class="nav-link">Trucks</a>
+        <a href="prediction.html" class="nav-link">AI Prediction</a>
+        <a href="priority.html" class="nav-link">Collection Priority</a>
+        <a href="route.html" class="nav-link active">Route Planning</a>
+        <a href="analytics.html" class="nav-link">Analytics</a>
+    </nav>
+</div>
+```
+
+</header>
+
+<main class="main">
+
+```
+<div class="welcome">
+    <h2>Route Planning</h2>
+    <p>Find an efficient collection route using A* pathfinding</p>
+</div>
+
+
+<!-- Route Input + Result -->
+<div class="dashboard-grid">
+
+    <!-- Route Input -->
+    <div class="card">
+
+        <div class="card-header">
+            <h3 class="card-title">Route Input</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form>
+
+                <div class="form-group">
+                    <label for="truckSelect">Truck</label>
+
+                    <select id="truckSelect" class="form-control">
+                        <option value="T001" selected>
+                            T001 - Ravi Kumar
+                        </option>
+
+                        <option value="T002">
+                            T002 - Suresh
+                        </option>
+
+                        <option value="T003">
+                            T003 - Mahesh
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="startPoint">
+                        Starting Point
+                    </label>
+
+                    <select id="startPoint" class="form-control">
+
+                        <option value="Main Gate" selected>
+                            Main Gate
+                        </option>
+
+                        <option value="Parking">
+                            Parking
+                        </option>
+
+                        <option value="Block A">
+                            Block A
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination / Collection Area
+                    </label>
+
+                    <select id="destination" class="form-control">
+
+                        <option value="Main Gate">
+                            Main Gate
+                        </option>
+
+                        <option value="Library">
+                            Library
+                        </option>
+
+                        <option value="Canteen">
+                            Canteen
+                        </option>
+
+                        <option value="Block A" selected>
+                            Block A
+                        </option>
+
+                        <option value="Block B">
+                            Block B
+                        </option>
+
+                        <option value="Parking">
+                            Parking
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="width: 100%;"
+                    onclick="findRoute()">
+
+                    Calculate Route
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Recommended Route -->
+    <div class="card">
+
+        <div class="card-header">
+            <h3 class="card-title">
+                Recommended Route
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Truck:
+                </span>
+
+                <span
+                    class="result-value"
+                    id="routeTruck">
+                    T001
+                </span>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Start:
+                </span>
+
+                <span
+                    class="result-value"
+                    id="routeStart">
+                    Main Gate
+                </span>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Route:
+                </span>
+
+                <span
+                    class="result-value"
+                    id="routePath"
+                    style="font-weight: 600; color: var(--primary);">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Destination:
+                </span>
+
+                <span
+                    class="result-value"
+                    id="routeDestination">
+                    Block A
+                </span>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Number of Locations:
+                </span>
+
+                <span
+                    class="result-value"
+                    id="routeStops">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <span class="result-label">
+                    Status:
+                </span>
+
+                <span
+                    class="badge badge-normal"
+                    id="routeStatus">
+
+                    Ready
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Route Visualization -->
+<div
+    class="card"
+    style="margin-top: 1.5rem;">
+
+    <div class="card-header">
+
+        <h3 class="card-title">
+            Route Visualization
+        </h3>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div
+            id="routeVisualization"
+            style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 1rem;
+            ">
+
+            <div style="text-align: center;">
+
+                <div
+                    style="
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 50%;
+                        background: var(--primary-bg);
+                        color: var(--primary);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.5rem;
+                        margin: 0 auto;
+                    ">
+
+                    🚛
+
+                </div>
+
+                <div
+                    style="
+                        margin-top: 0.5rem;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                    ">
+
+                    Start
+
+                </div>
+
+                <div
+                    id="visualStart"
+                    style="
+                        font-size: 0.75rem;
+                        color: var(--text-secondary);
+                    ">
+
+                    Main Gate
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- A* Explanation -->
+<div
+    class="dashboard-grid"
+    style="margin-top: 1.5rem;">
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                How A* Works
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <p
+                style="
+                    color: var(--text-secondary);
+                    line-height: 1.6;
+                ">
+
+                A* searches the road graph by considering
+                the distance already traveled
+                (<strong>g(n)</strong>)
+                and an estimated distance to the destination
+                (<strong>h(n)</strong>).
+
+                It selects the path with the lowest total cost
+
+                <strong>
+                    f(n) = g(n) + h(n)
+                </strong>
+
+                to find an efficient route.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Algorithm Flow
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div
+                style="
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                    text-align: center;
+                ">
+
+                <div>
+
+                    <div style="font-size: 2rem;">
+                        🛣️
+                    </div>
+
+                    <div
+                        style="
+                            font-weight: 600;
+                            margin-top: 0.5rem;
+                        ">
+
+                        Road Graph
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        color: var(--text-muted);
+                        font-size: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                    ">
+
+                    →
+
+                </div>
+
+
+                <div>
+
+                    <div style="font-size: 2rem;">
+                        🔍
+                    </div>
+
+                    <div
+                        style="
+                            font-weight: 600;
+                            margin-top: 0.5rem;
+                        ">
+
+                        A* Algorithm
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        color: var(--text-muted);
+                        font-size: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                    ">
+
+                    →
+
+                </div>
+
+
+                <div>
+
+                    <div style="font-size: 2rem;">
+                        📍
+                    </div>
+
+                    <div
+                        style="
+                            font-weight: 600;
+                            margin-top: 0.5rem;
+                        ">
+
+                        Shortest Path
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        color: var(--text-muted);
+                        font-size: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                    ">
+
+                    →
+
+                </div>
+
+
+                <div>
+
+                    <div style="font-size: 2rem;">
+                        🚛
+                    </div>
+
+                    <div
+                        style="
+                            font-weight: 600;
+                            margin-top: 0.5rem;
+                        ">
+
+                        Truck Route
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</main>
+
+<script src="js/route.js"></script>
+
+</body>
+</html>

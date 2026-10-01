@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Smart Waste Collection Router</h1>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="bins.html" class="nav-link">Bins</a>
+                <a href="trucks.html" class="nav-link active">Trucks</a>
+                <a href="prediction.html" class="nav-link">AI Prediction</a>
+                <a href="priority.html" class="nav-link">Collection Priority</a>
+                <a href="route.html" class="nav-link">Route Planning</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="welcome">
+            <h2>Truck Management</h2>
+            <p>Monitor and manage waste collection trucks</p>
+        </div>
+
+        <div class="summary-grid">
+            <section class="summary-card total-card">
+                <div class="summary-icon primary">🚛</div>
+                <div class="summary-info">
+                    <span class="summary-label">Total Trucks</span>
+                    <span class="summary-value">10</span>
+                </div>
+            </section>
+
+            <section class="summary-card critical-card">
+                <div class="summary-icon normal">✅</div>
+                <div class="summary-info">
+                    <span class="summary-label">Available Trucks</span>
+                    <span class="summary-value normal-text">6</span>
+                </div>
+            </section>
+
+            <section class="summary-card warning-card">
+                <div class="summary-icon warning">🛣️</div>
+                <div class="summary-info">
+                    <span class="summary-label">On Route</span>
+                    <span class="summary-value warning-text">4</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Truck List</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Truck ID</th>
+                                <th>Driver</th>
+                                <th>Capacity</th>
+                                <th>Status</th>
+                                <th>Current Route</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="truckTableBody">
+                            <tr>
+                                <td>T001</td>
+                                <td>Ravi Kumar</td>
+                                <td>5000 kg</td>
+                                <td><span class="badge badge-normal">Available</span></td>
+                                <td>—</td>
+                                <td><button class="btn btn-success btn-sm">Assign</button></td>
+                            </tr>
+                            <tr>
+                                <td>T002</td>
+                                <td>Suresh</td>
+                                <td>5000 kg</td>
+                                <td><span class="badge badge-warning">On Route</span></td>
+                                <td>Route A</td>
+                                <td><button class="btn btn-warning btn-sm">Track</button></td>
+                            </tr>
+                            <tr>
+                                <td>T003</td>
+                                <td>Mahesh</td>
+                                <td>3000 kg</td>
+                                <td><span class="badge badge-normal">Available</span></td>
+                                <td>—</td>
+                                <td><button class="btn btn-success btn-sm">Assign</button></td>
+                            </tr>
+                            <tr>
+                                <td>T004</td>
+                                <td>Ramesh</td>
+                                <td>5000 kg</td>
+                                <td><span class="badge badge-warning">On Route</span></td>
+                                <td>Route B</td>
+                                <td><button class="btn btn-warning btn-sm">Track</button></td>
+                            </tr>
+                            <tr>
+                                <td>T005</td>
+                                <td>Arjun</td>
+                                <td>3000 kg</td>
+                                <td><span class="badge badge-critical">Maintenance</span></td>
+                                <td>—</td>
+                                <td><button class="btn btn-danger btn-sm">Service</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

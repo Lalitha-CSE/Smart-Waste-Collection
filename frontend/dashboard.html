@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Collection Router</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Smart Waste Collection Router</h1>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="bins.html" class="nav-link">Bins</a>
+                <a href="trucks.html" class="nav-link">Trucks</a>
+                <a href="prediction.html" class="nav-link">AI Prediction</a>
+                <a href="priority.html" class="nav-link">Collection Priority</a>
+                <a href="route.html" class="nav-link">Route Planning</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="welcome">
+            <h2>Welcome, Admin</h2>
+            <p>Smart Waste Collection Management Dashboard</p>
+        </div>
+
+       <section class="summary-grid">
+    <div class="summary-card">
+        <div class="summary-icon primary">📦</div>
+        <div class="summary-info">
+            <span class="summary-label">Total Bins</span>
+            <span class="summary-value" id="totalBins">0</span>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-icon critical">⚠️</div>
+        <div class="summary-info">
+            <span class="summary-label">Critical Bins</span>
+            <span class="summary-value critical-text" id="criticalBins">0</span>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-icon warning">⚡</div>
+        <div class="summary-info">
+            <span class="summary-label">Warning Bins</span>
+            <span class="summary-value warning-text" id="warningBins">0</span>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-icon normal">✅</div>
+        <div class="summary-info">
+            <span class="summary-label">Normal Bins</span>
+            <span class="summary-value normal-text" id="normalBins">0</span>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-icon truck">🚛</div>
+        <div class="summary-info">
+            <span class="summary-label">Available Trucks</span>
+            <span class="summary-value" id="availableTrucks">0</span>
+        </div>
+    </div>
+
+    <div class="summary-card">
+        <div class="summary-icon collected">📊</div>
+        <div class="summary-info">
+            <span class="summary-label">Collections Today</span>
+            <span class="summary-value">32</span>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer class="footer">
+        <p>B.Tech AIML Mini Project - Smart Waste Collection Router</p>
+    </footer>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

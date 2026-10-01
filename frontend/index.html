@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Collection Router - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.15);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        .icon {
+            font-size: 3.5rem;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            color: #1b5e20;
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #555;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            color: #333;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+        }
+        .btn-login {
+            width: 100%;
+            padding: 0.875rem;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-login:hover {
+            background: #1b5e20;
+        }
+        .demo-credentials {
+            background: #f1f8e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #33691e;
+        }
+        .demo-credentials strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .demo-credentials div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #888;
+            font-size: 0.8rem;
+        }
+        .message {
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+        .message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: block;
+        }
+        .message.error {
+            background: #fdeaea;
+            color: #c62828;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="icon">♻️</div>
+        <h1>Smart Waste Collection Router</h1>
+        <p class="subtitle">Smart & Efficient Waste Collection Management</p>
+        
+        <div id="message" class="message"></div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+        
+        <div class="demo-credentials">
+            <strong>Demo Credentials</strong>
+            <div><span>Username:</span> <span>admin</span></div>
+            <div><span>Password:</span> <span>admin123</span></div>
+        </div>
+        
+        <p class="footer">B.Tech AIML Mini Project</p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const messageEl = document.getElementById('message');
+            
+            if (username === 'admin' && password === 'admin123') {
+                messageEl.textContent = 'Login successful';
+                messageEl.className = 'message success';
+                
+                setTimeout(function() {
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            } else {
+                messageEl.textContent = 'Invalid username or password';
+                messageEl.className = 'message error';
+            }
+        });
+    </script>
+</body>
+</html>

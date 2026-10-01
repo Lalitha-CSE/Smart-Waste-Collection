@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Priority</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Smart Waste Collection Router</h1>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="bins.html" class="nav-link">Bins</a>
+                <a href="trucks.html" class="nav-link">Trucks</a>
+                <a href="prediction.html" class="nav-link">AI Prediction</a>
+                <a href="priority.html" class="nav-link active">Collection Priority</a>
+                <a href="route.html" class="nav-link">Route Planning</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="welcome">
+            <h2>Collection Priority</h2>
+            <p>Prioritize bins based on fill level and collection urgency</p>
+        </div>
+
+        <div class="summary-grid">
+            <section class="summary-card critical-card">
+                <div class="summary-icon critical">⚠️</div>
+                <div class="summary-info">
+                    <span class="summary-label">Critical Bins</span>
+                    <span class="summary-value critical-text" id="criticalPriority">8</span>
+                </div>
+            </section>
+
+            <section class="summary-card warning-card">
+                <div class="summary-icon warning">⚡</div>
+                <div class="summary-info">
+                    <span class="summary-label">High Priority</span>
+                    <span class="summary-value warning-text" id="warningPriority">12</span>
+                </div>
+            </section>
+
+            <section class="summary-card total-card">
+                <div class="summary-icon normal">✅</div>
+                <div class="summary-info">
+                    <span class="summary-label">Normal Priority</span>
+                    <span class="summary-value normal-text" id="normalPriority">30</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Priority Queue</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Bin ID</th>
+                                <th>Location</th>
+                                <th>Current Fill</th>
+                                <th>Predicted Fill</th>
+                                <th>Risk</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="priorityTableBody">
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>B001</td>
+                                <td>Main Gate</td>
+                                <td>92%</td>
+                                <td>97%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td><button class="btn btn-danger btn-sm">Collect Now</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>B004</td>
+                                <td>Block A</td>
+                                <td>88%</td>
+                                <td>94%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td><button class="btn btn-danger btn-sm">Collect Now</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>B006</td>
+                                <td>Parking</td>
+                                <td>81%</td>
+                                <td>89%</td>
+                                <td><span class="badge badge-critical">Critical</span></td>
+                                <td><button class="btn btn-danger btn-sm">Collect Now</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>B002</td>
+                                <td>Library</td>
+                                <td>76%</td>
+                                <td>84%</td>
+                                <td><span class="badge badge-warning">Warning</span></td>
+                                <td><button class="btn btn-warning btn-sm">Schedule</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>B005</td>
+                                <td>Block B</td>
+                                <td>55%</td>
+                                <td>70%</td>
+                                <td><span class="badge badge-normal">Normal</span></td>
+                                <td><button class="btn btn-success btn-sm">Normal</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid" style="margin-top: 1.5rem;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">How Priority Works</h3>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Bins with higher predicted fill levels receive higher priority. 
+                        A <strong>Priority Queue (Heap)</strong> keeps the most urgent bins at the top 
+                        so collection teams always know which bins to visit first.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Priority Flow</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem;">📊</div>
+                            <div style="font-weight: 600; margin-top: 0.5rem;">Bin Data</div>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                        <div>
+                            <div style="font-size: 2rem;">🧮</div>
+                            <div style="font-weight: 600; margin-top: 0.5rem;">Calculate Priority</div>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                        <div>
+                            <div style="font-size: 2rem;">📋</div>
+                            <div style="font-weight: 600; margin-top: 0.5rem;">Priority Queue</div>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                        <div>
+                            <div style="font-size: 2rem;">🚛</div>
+                            <div style="font-weight: 600; margin-top: 0.5rem;">Collection Order</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/priority.js"></script>
+</body>
+</html>

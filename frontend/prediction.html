@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fill Prediction</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Smart Waste Collection Router</h1>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="bins.html" class="nav-link">Bins</a>
+                <a href="trucks.html" class="nav-link">Trucks</a>
+                <a href="prediction.html" class="nav-link active">AI Prediction</a>
+                <a href="priority.html" class="nav-link">Collection Priority</a>
+                <a href="route.html" class="nav-link">Route Planning</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="welcome">
+            <h2>AI Fill Prediction</h2>
+            <p>Predict future waste-bin fill levels using AI</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Prediction Input</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="binId">Bin ID</label>
+                            <select id="binId" class="form-control">
+                                <option value="B001" selected>B001 - Main Gate</option>
+                                <option value="B002">B002 - Library</option>
+                                <option value="B003">B003 - Canteen</option>
+                                <option value="B004">B004 - Block A</option>
+                                <option value="B005">B005 - Block B</option>
+                                <option value="B006">B006 - Parking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentFill">Current Fill Level (%)</label>
+                            <input type="number" id="currentFill" class="form-control" value="72" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="previousFill">Previous Fill Level (%)</label>
+                            <input type="number" id="previousFill" class="form-control" value="65" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="daysPredict">Days to Predict</label>
+                            <select id="daysPredict" class="form-control">
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="7" selected>7 Days</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="predictFill()">Predict Fill Level</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Prediction Result</h3>
+                </div>
+                <div class="card-body">
+                    <div class="result-item">
+                        <span class="result-label">Selected Bin:</span>
+                        <span class="result-value">B001</span>
+                    </div>
+                    <div class="result-item">
+    <span class="result-label">Current Fill:</span>
+    <span class="result-value" id="currentFillResult">72%</span>
+</div>
+
+<div class="result-item">
+    <span class="result-label">Predicted Fill:</span>
+    <span class="result-value"
+          id="predictedFill"
+          style="font-size: 1.5rem; font-weight: 700; color: var(--danger);">
+        0%
+    </span>
+</div>
+
+<div class="result-item">
+    <span class="result-label">Risk Level:</span>
+    <span class="badge badge-critical" id="riskLevel">
+        -
+    </span>
+</div>
+
+<div class="result-item">
+    <span class="result-label">Recommendation:</span>
+    <span class="result-value"
+          id="recommendation"
+          style="color: var(--danger); font-weight: 500;">
+        -
+    </span>
+</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+                <h3 class="card-title">How It Works</h3>
+            </div>
+            <div class="card-body">
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 2rem;">📊</div>
+                        <div style="font-weight: 600; margin-top: 0.5rem;">Current Fill Data</div>
+                    </div>
+                    <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                    <div>
+                        <div style="font-size: 2rem;">🤖</div>
+                        <div style="font-weight: 600; margin-top: 0.5rem;">AI Prediction</div>
+                    </div>
+                    <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                    <div>
+                        <div style="font-size: 2rem;">⚠️</div>
+                        <div style="font-weight: 600; margin-top: 0.5rem;">Risk Level</div>
+                    </div>
+                    <div style="color: var(--text-muted); font-size: 1.5rem; display: flex; align-items: center;">→</div>
+                    <div>
+                        <div style="font-size: 2rem;">🚛</div>
+                        <div style="font-weight: 600; margin-top: 0.5rem;">Collection Recommendation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+ <script src="js/prediction.js"></script>   
+</body>
+</html>
