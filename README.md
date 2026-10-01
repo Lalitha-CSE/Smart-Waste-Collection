@@ -153,4 +153,32 @@ Open the Python folder and activate the virtual environment:
 ```powershell
 
 .\\venv\\Scripts\\Activate.ps1
+Start FastAPI:
+
+```powershell
+uvicorn app:app --reload
+
+Python API runs on:
+
+http://127.0.0.1:8000
+
+### Frontend
+
+Open the frontend using a local server such as VS Code Live Server.
+
+## Database
+
+The project uses MySQL database `smart_waste`.
+
+Database setup SQL is available in:
+
+`database/smart_waste.sql`
+
+## Project Type
+
+B.Tech AIML Mini Project
+
+## Author
+
+Lalitha-CSE
 
