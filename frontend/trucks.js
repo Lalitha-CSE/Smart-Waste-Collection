@@ -1,6 +1,6 @@
 async function loadTrucks() {
     try {
-        const response = await fetch("http://localhost:8080/api/trucks");
+        const response = await fetch("https://smart-waste-collection-1-awua.onrender.com/api/trucks");
 
         if (!response.ok) {
             throw new Error("Failed to load trucks");

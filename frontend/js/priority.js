@@ -4,8 +4,8 @@ async function loadPriority() {
     try {
 
         const response = await fetch(
-            "http://localhost:8080/api/priority"
-        );
+        "https://smart-waste-collection-1-awua.onrender.com/api/priority"
+         );
 
         if (!response.ok) {
             throw new Error("Priority API failed");

@@ -1,7 +1,6 @@
 async function loadBins() {
     try {
-        const response = await fetch("http://localhost:8080/api/bins");
-
+        const response = await fetch("https://smart-waste-collection-1-awua.onrender.com/api/bins");
         if (!response.ok) {
             throw new Error("Failed to load bins");
         }

@@ -7,8 +7,8 @@ const truck = document.getElementById("truckSelect").value;
 try {
 
     const response = await fetch(
-        `http://localhost:8080/api/route?start=${encodeURIComponent(start)}&destination=${encodeURIComponent(destination)}`
-    );
+    `https://smart-waste-collection-1-awua.onrender.com/api/route?start=${encodeURIComponent(start)}&destination=${encodeURIComponent(destination)}`
+);
 
     if (!response.ok) {
         throw new Error("Route API failed");

@@ -1,8 +1,8 @@
 async function loadDashboard() {
     try {
         const [binsResponse, trucksResponse] = await Promise.all([
-            fetch("http://localhost:8080/api/bins"),
-            fetch("http://localhost:8080/api/trucks")
+           fetch("https://smart-waste-collection-1-awua.onrender.com/api/bins"),
+           fetch("https://smart-waste-collection-1-awua.onrender.com/api/trucks")
         ]);
 
         if (!binsResponse.ok || !trucksResponse.ok) {
