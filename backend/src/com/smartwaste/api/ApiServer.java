@@ -30,9 +30,12 @@ public class ApiServer {
     private static final TruckRepository truckRepository = new TruckRepository();
 
     public static void main(String[] args) throws IOException {
+int port = Integer.parseInt(
+        System.getenv().getOrDefault("PORT", "8080")
+);
 
-        HttpServer server =
-                HttpServer.create(new InetSocketAddress(8080), 0);
+HttpServer server =
+        HttpServer.create(new InetSocketAddress(port), 0);
 
         server.createContext("/api/health", new HealthHandler());
         server.createContext("/api/bins", new BinsHandler());
@@ -43,8 +46,8 @@ public class ApiServer {
         server.start();
 
         System.out.println(
-                "Smart Waste API Server started on http://localhost:8080"
-        );
+        "Smart Waste API Server started on port " + port
+   );
     }
 static class PriorityHandler implements HttpHandler {
 

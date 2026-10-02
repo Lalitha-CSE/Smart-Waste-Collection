@@ -1,9 +1,6 @@
 -- Smart Waste Collection Database Schema
 -- Simple schema for B.Tech class project
 
--- Create database
-CREATE DATABASE IF NOT EXISTS smart_waste;
-USE smart_waste;
 
 -- ========================================
 -- Bins Table
