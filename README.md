@@ -4,7 +4,9 @@
 
 An AI-based smart waste collection system that helps prioritize waste bins and generate efficient collection routes.
 
+## 🚀 Live Demo
 
+👉 [Click here to open the Live Demo](https://lalitha-cse.github.io/Smart-Waste-Collection/)
 
 \## Features
 
