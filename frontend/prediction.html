@@ -35,36 +35,60 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        <div class="form-group">
-                            <label for="binId">Bin ID</label>
-                            <select id="binId" class="form-control">
-                                <option value="B001" selected>B001 - Main Gate</option>
-                                <option value="B002">B002 - Library</option>
-                                <option value="B003">B003 - Canteen</option>
-                                <option value="B004">B004 - Block A</option>
-                                <option value="B005">B005 - Block B</option>
-                                <option value="B006">B006 - Parking</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="currentFill">Current Fill Level (%)</label>
-                            <input type="number" id="currentFill" class="form-control" value="72" min="0" max="100">
-                        </div>
-                        <div class="form-group">
-                            <label for="previousFill">Previous Fill Level (%)</label>
-                            <input type="number" id="previousFill" class="form-control" value="65" min="0" max="100">
-                        </div>
-                        <div class="form-group">
-                            <label for="daysPredict">Days to Predict</label>
-                            <select id="daysPredict" class="form-control">
-                                <option value="1">1 Day</option>
-                                <option value="2">2 Days</option>
-                                <option value="3">3 Days</option>
-                                <option value="7" selected>7 Days</option>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="predictFill()">Predict Fill Level</button>
-                    </form>
+    <div class="form-group">
+        <label for="binId">Bin ID</label>
+        <select id="binId" class="form-control" onchange="updateBinFill()">
+            <option value="B001" selected>B001 - Main Gate</option>
+            <option value="B002">B002 - Library</option>
+            <option value="B003">B003 - Canteen</option>
+            <option value="B004">B004 - Block A</option>
+            <option value="B005">B005 - Block B</option>
+            <option value="B006">B006 - Parking</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="currentFill">Current Fill Level (%)</label>
+        <input
+            type="number"
+            id="currentFill"
+            class="form-control"
+            value="92"
+            min="0"
+            max="100"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="previousFill">Previous Fill Level (%)</label>
+        <input
+            type="number"
+            id="previousFill"
+            class="form-control"
+            value="65"
+            min="0"
+            max="100"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="daysPredict">Days to Predict</label>
+        <select id="daysPredict" class="form-control">
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="7" selected>7 Days</option>
+        </select>
+    </div>
+
+    <button
+        type="button"
+        class="btn btn-primary"
+        onclick="predictFill()"
+    >
+        Predict Fill Level
+    </button>
+</form>
                 </div>
             </div>
 

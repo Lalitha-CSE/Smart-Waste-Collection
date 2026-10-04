@@ -1,3 +1,18 @@
+function updateBinFill() {
+    const binId = document.getElementById("binId").value;
+
+    const binFills = {
+        B001: 92,
+        B002: 76,
+        B003: 45,
+        B004: 88,
+        B005: 55,
+        B006: 81
+    };
+
+    document.getElementById("currentFill").value = binFills[binId];
+}
+
 async function predictFill() {
     const binId = document.getElementById("binId").value;
     const currentFill = Number(document.getElementById("currentFill").value);
