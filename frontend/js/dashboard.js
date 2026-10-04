@@ -39,8 +39,7 @@ async function loadDashboard() {
         document.getElementById("warningBins").textContent = warningBins;
         document.getElementById("normalBins").textContent = normalBins;
         document.getElementById("availableTrucks").textContent = availableTrucks;
-        document.getElementById("onRouteTrucks").textContent = onRouteTrucks;
-
+        
         console.log("Dashboard data loaded successfully");
 
     } catch (error) {
