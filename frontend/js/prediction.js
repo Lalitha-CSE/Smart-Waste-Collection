@@ -30,6 +30,8 @@ async function predictFill() {
 
         console.log("Prediction result:", result);
 
+        document.getElementById("selectedBin").textContent = binId;
+
         document.getElementById("currentFillResult").textContent =
             currentFill + "%";
 
